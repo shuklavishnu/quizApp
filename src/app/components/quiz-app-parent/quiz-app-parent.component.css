@@ -1,0 +1,22 @@
+
+.example-card{
+    height: 90vh;
+    width: 50%;
+    background: antiquewhite;
+    position: relative;
+    left: 25%;
+    top: 10%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 25px 3px lightblue;
+}
+.quiz-header{
+    margin-left:40%;
+}
+.border-rule{
+    height: 2px;
+    background: black;
+}
+::ng-deep .ng-select{
+    border: 1px solid grey;
+    border-radius: 3px;
+}
