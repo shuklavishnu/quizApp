@@ -1,4 +1,4 @@
-<div class="container">
+<form class="container" [formGroup]="parentForm" (ngSubmit)="submitResult()">
     <mat-card class="example-card">
       <mat-card-header>
         <div class="quiz-header">
@@ -8,9 +8,10 @@
       <span class="border-rule"></span>
       <mat-card-content>
         <div *ngFor="let quest of questions;let i=index">
-          <quiz-child [question]="quest" [index]="i"></quiz-child>
+          <quiz-child [ChildForm]="parentForm" [question]="quest" [index]="i"></quiz-child>
         </div>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
       </mat-card-content>
     </mat-card>
       
-</div>
+  </form>

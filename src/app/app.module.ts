@@ -10,15 +10,18 @@ import { HttpClientModule }  from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SubquestionComponent } from './components/subquestion/subquestion.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         QuizAppParentComponent,
-        QuizAppChildComponent
+        QuizAppChildComponent,
+        SubquestionComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -30,9 +33,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         MatCardModule,
         NgSelectModule,
         FormsModule,
-        MatSlideToggleModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatButtonModule,
+        ReactiveFormsModule
     ]
 })
 export class AppModule { }

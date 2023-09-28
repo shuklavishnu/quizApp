@@ -1,21 +1,18 @@
 <div class="drop-down" *ngIf="question.type === 'dropdown'">
     <p>Question  ({{index+1}}) : {{question.question}}</p>
-    <ng-select [items]="question.options" [(ngModel)]="selectedItem" class="ng-select" placeholder="Select an option"></ng-select>
+    <ng-select [items]="question.options" (change)="updateValue($event)" [(ngModel)]="selectedItem" class="ng-select" placeholder="Select an option"></ng-select>
     <div *ngIf="question?.subQue?.length" class="subquestion-container">
         <div *ngFor="let subQues of question.subQue;let i=index">
             <div *ngIf="subQues.showIf === selectedItem">
-                <div *ngIf="subQues.type==='dropdown'" class="drop-down">
-                    <p>Question ({{i}}): {{subQues.question}}</p>
-                    <ng-select [items]="subQues.options"  class="ng-select" placeholder="Select an option"></ng-select>
-                </div>
-                <div *ngIf="subQues.type==='textinput'" class="drop-down">
-                    <p>Question : {{subQues.question}}</p>
-                    <mat-form-field>
-                        <mat-label>Input</mat-label>
-                        <input matInput>
-                      </mat-form-field>
-                </div>
+                <app-subquestion [subQues]="subQues" [subQuesForm]="ChildForm" [index]="i"></app-subquestion>
             </div>
         </div>
     </div>
+</div>
+<div class="drop-down" *ngIf="question.type ==='textinput'">
+    <p>Question({{index+1}}) : {{question.question}}</p>
+    <mat-form-field>
+        <mat-label>Input</mat-label>
+        <input matInput type="text" class="form-control" #data  (input)="updateValue(data.value)" placeholder="Type your Answe">
+      </mat-form-field>
 </div>

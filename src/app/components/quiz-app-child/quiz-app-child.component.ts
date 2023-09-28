@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'quiz-child',
@@ -8,9 +9,16 @@ import { Input } from '@angular/core';
 })
 export class QuizAppChildComponent {
  @Input()question:any=[];
- @Input()index:number=1;
+ @Input()index:number = 0;
+  @Input()ChildForm!: FormGroup;
  selectedItem:string='';
+  constructor(private fb: FormBuilder) {}
  ngOnInit(){
-  console.log(this.question);
+  const control = this.fb.control('');
+  this.ChildForm.addControl(this.question.question, control);
  }
+
+ updateValue(value: any) {
+  this.ChildForm.get(this.question.question)?.patchValue(value);
+}
 }

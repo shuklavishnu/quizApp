@@ -1,0 +1,13 @@
+<form action="">
+    <div *ngIf="subQues.type==='dropdown'" class="drop-down">
+        <p>Sub-Question ({{index+1}}) : {{subQues.question}}</p>
+        <ng-select (change)="updateValue($event)" [items]="subQues.options"  class="ng-select" placeholder="Select an option"></ng-select>
+    </div>
+    <div *ngIf="subQues.type==='textinput'" class="drop-down">
+        <p>Sub-Question({{index+1}}) : {{subQues.question}}</p>
+        <mat-form-field>
+            <mat-label>Input</mat-label>
+            <input matInput type="text" placeholder="Type your answer" #subInput  (input)="updateValue(subInput.value)">
+          </mat-form-field>
+    </div>
+</form>
